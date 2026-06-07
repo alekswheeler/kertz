@@ -6,7 +6,7 @@
   "homepage": "https://github.io",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build --output-dir build",
+    "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist"
