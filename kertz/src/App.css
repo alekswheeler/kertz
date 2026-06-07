@@ -1,0 +1,370 @@
+.counter {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  margin-bottom: 24px;
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.hero {
+  position: relative;
+
+  .base,
+  .framework,
+  .vite {
+    inset-inline: 0;
+    margin: 0 auto;
+  }
+
+  .base {
+    width: 170px;
+    position: relative;
+    z-index: 0;
+  }
+
+  .framework,
+  .vite {
+    position: absolute;
+  }
+
+  .framework {
+    z-index: 1;
+    top: 34px;
+    height: 28px;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
+      scale(1.4);
+  }
+
+  .vite {
+    z-index: 0;
+    top: 107px;
+    height: 26px;
+    width: auto;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
+      scale(0.8);
+  }
+}
+
+#center {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  place-content: center;
+  place-items: center;
+  flex-grow: 1;
+
+  @media (max-width: 1024px) {
+    padding: 32px 20px 24px;
+    gap: 18px;
+  }
+}
+
+#next-steps {
+  display: flex;
+  border-top: 1px solid var(--border);
+  text-align: left;
+
+  & > div {
+    flex: 1 1 0;
+    padding: 32px;
+    @media (max-width: 1024px) {
+      padding: 24px 20px;
+    }
+  }
+
+  .icon {
+    margin-bottom: 16px;
+    width: 22px;
+    height: 22px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+#docs {
+  border-right: 1px solid var(--border);
+
+  @media (max-width: 1024px) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+#next-steps ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+  margin: 32px 0 0;
+
+  .logo {
+    height: 18px;
+  }
+
+  a {
+    color: var(--text-h);
+    font-size: 16px;
+    border-radius: 6px;
+    background: var(--social-bg);
+    display: flex;
+    padding: 6px 12px;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: var(--shadow);
+    }
+    .button-icon {
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      flex: 1 1 calc(50% - 8px);
+    }
+
+    a {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+}
+
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+  @media (max-width: 1024px) {
+    height: 48px;
+  }
+}
+
+.ticks {
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: -4.5px;
+    border: 5px solid transparent;
+  }
+
+  &::before {
+    left: 0;
+    border-left-color: var(--border);
+  }
+  &::after {
+    right: 0;
+    border-right-color: var(--border);
+  }
+}
+
+/* ====== HEADER ===== */
+
+/* Linha fina que surge embaixo do link no Hover */
+.kertz-nav-link {
+  position: relative;
+}
+
+.kertz-nav-link::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #c5a880; /* Ouro Mineral */
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.kertz-nav-link:hover {
+  color: #c5a880 !important;
+}
+
+.kertz-nav-link:hover::after,
+.kertz-nav-link.ativo::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Hovers dos Botões */
+.btn-primario-hover:hover {
+  background-color: #c5a880 !important; /* Transiciona para Ouro Mineral */
+}
+
+.btn-secundario-hover:hover {
+  border-color: #0c0d10 !important;
+  background-color: rgba(12, 13, 16, 0.03);
+}
+
+/* --- Responsividade (Media Queries) --- */
+
+/* Esconde o botão hamburguer no computador por padrão */
+.kertz-btn-mobile {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  /* Esconde a barra tradicional desktop */
+  .kertz-nav-desktop {
+    display: none !important;
+  }
+
+  /* Mostra o ícone ☰ no celular */
+  .kertz-btn-mobile {
+    display: block !important;
+  }
+
+  /* Estutura do menu de gaveta quando aberto no celular */
+  .kertz-nav-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 30px 0;
+    background-color: rgba(247, 245, 240, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid #e2e8f0;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Faz os botões ocuparem espaço correto em telas pequenas */
+  .kertz-nav-mobile .botoes-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 80%;
+  }
+
+  .kertz-nav-mobile button {
+    width: 100%;
+  }
+}
+
+/* ====== FIM HEADER ===== */
+
+/* ====== BODY ===== */
+
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f7f5f0; /* offWhite */
+}
+
+/* ============================================================================
+   ESTADOS DE HOVER (Botões)
+   ============================================================================ */
+.btn-hover-primary:hover {
+  background-color: #1a2332 !important; /* nightBlue */
+}
+
+.btn-hover-secondary:hover {
+  border-color: #c5a880 !important; /* gold */
+  color: #c5a880 !important;
+}
+
+.btn-hover-gold:hover {
+  background-color: #b0926a !important; /* gold escurecido para contraste no hover */
+}
+
+/* ============================================================================
+   CLASSES UTILITÁRIAS
+   ============================================================================ */
+.w-full {
+  width: 100%;
+}
+
+.self-start-mobile {
+  align-self: flex-start;
+}
+
+/* ============================================================================
+   BARRAS DE PROGRESSO (Larguras dinâmicas via classe para evitar inline CSS)
+   ============================================================================ */
+.progress-fill.w-95 {
+  width: 95%;
+}
+.progress-fill.w-40 {
+  width: 40%;
+}
+.progress-fill.w-88 {
+  width: 88%;
+}
+
+/* ============================================================================
+   MEDIA QUERIES (Responsividade Mobile)
+   ============================================================================ */
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 40px 0 !important;
+  }
+
+  /* Colapsar grids para coluna única */
+  .metrics-grid-mobile,
+  .features-grid-mobile,
+  .pricing-grid-mobile,
+  .testimonials-grid-mobile,
+  .highlight-container-mobile {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Empilhar botões do Hero no mobile */
+  .hero-buttons-mobile {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .hero-buttons-mobile button {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  /* Remover escala do card de preço em destaque no mobile para evitar overflow */
+  .pricing-featured {
+    transform: none !important;
+    margin: 24px 0;
+    border: 2px solid #c5a880 !important; /* gold border para destacar sem scale */
+  }
+
+  .self-start-mobile {
+    align-self: center !important;
+    width: 100%;
+  }
+}
+
+/* ====== FIM BODY ===== */
