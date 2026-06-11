@@ -27,7 +27,6 @@ function Header() {
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
-      maxWidth: "1200px",
       margin: "0 auto",
     },
     logo: {

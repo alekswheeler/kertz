@@ -1,26 +1,18 @@
-import "./App.css";
-import Header from "./components/Header";
-import {
-  Features,
-  Hero,
-  Highlight,
-  Pricing,
-  Testimonials,
-  FinalCTA,
-} from "./components/Land";
+// src/App.tsx
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Home } from "./pages/Home/index";
+import Hero from "./components/Hero";
 
-function App() {
+export function App() {
   return (
-    <div>
-      <Header />
-      <Hero />
-      <Features />
-      <Highlight />
-      <Pricing />
-      <Testimonials />
-      <FinalCTA />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        {/* Rotas Públicas/Institucionais */}
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Hero />} />
+        {/* Rota de um painel interno, por exemplo */}
+        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;
