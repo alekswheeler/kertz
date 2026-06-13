@@ -1,0 +1,32 @@
+/* Features.module.css */
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.featureCard {
+  padding: 32px;
+  border: 1px solid var(--grayLine);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.featureIcon {
+  font-size: 32px;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.featureTitle {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: var(--obsidian);
+}
+
+.featureText {
+  font-size: 15px;
+  color: var(--obsidian);
+  opacity: 0.8;
+}

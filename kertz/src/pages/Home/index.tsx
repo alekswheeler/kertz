@@ -1,3 +1,4 @@
+import Features from "../../components/Features/Features";
 import { Container } from "../../components/layout/Container";
 import { MainLayout } from "../../layouts/MainLayout";
 
@@ -30,6 +31,9 @@ export function Home() {
       <Container bgColor="red" columns={2}>
         <div>AAA</div>
         <div>BBB</div>
+      </Container>
+      <Container>
+        <Features />
       </Container>
     </MainLayout>
   );
