@@ -1,0 +1,72 @@
+/* Container.module.css */
+
+/* --- 1. Tokens Globais no Root (Como você sugeriu) --- */
+:root {
+  --bp-sm: 576px;
+  --bp-md: 768px;
+  --bp-lg: 992px;
+
+  --gap-sm: 0.75rem;
+  --gap-md: 1.5rem;
+  --gap-lg: 2rem;
+}
+
+/* --- 2. Container Externo (SECTION) --- */
+.custom-container-section {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* --- 3. Container Interno (DIV) --- */
+.container-inner-box {
+  width: 100%;
+  /* Dica de ouro: Garante que o conteúdo não estique em telas gigantes */
+  max-width: 1200px;
+  margin-inline: auto; /* Centraliza o conteúdo */
+}
+
+/* --- 4. Variantes de Layout --- */
+.container-inner-block {
+  display: block;
+}
+
+.container-inner-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-md);
+}
+
+/* O Grid Inteligente (Default) */
+.container-inner-grid {
+  display: grid;
+  gap: var(--gap-md);
+  /* Ajusta sozinho: cria colunas de no mínimo 280px até preencher o espaço */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* --- 5. Lógica de Colunas Forçadas (O Pulo do Gato) --- */
+/* Aplicado quando a prop 'columns' é passada */
+.has-dynamic-columns {
+  grid-template-columns: repeat(var(--dynamic-columns), 1fr) !important;
+}
+
+/* --- 6. Responsividade Padronizada --- */
+
+/* TABLET: Limita no máximo 2 colunas para grids explícitos */
+@media (max-width: 768px) {
+  .has-dynamic-columns {
+    /* Se pediu 4, vira 2. Se pediu 2, continua 2. */
+    grid-template-columns: repeat(
+      min(2, var(--dynamic-columns)),
+      1fr
+    ) !important;
+  }
+}
+
+/* MOBILE: Força 1 coluna para tudo */
+@media (max-width: 576px) {
+  .has-dynamic-columns,
+  .container-inner-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

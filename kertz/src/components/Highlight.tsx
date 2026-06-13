@@ -1,6 +1,6 @@
 import type React from "react";
 import colors from "../styles/Styles";
-import Button from "./UI/Button";
+import Button from "./UI/Button/Button";
 
 const styles: Record<string, React.CSSProperties> = {
   // Highlight

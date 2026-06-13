@@ -1,0 +1,39 @@
+.btn {
+  padding: 14px 32px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid transparent;
+}
+
+.primary {
+  background-color: var(--obsidian);
+  color: var(--offWhite);
+}
+
+.secondary {
+  background-color: transparent;
+  border: 1px solid var(--grayLine);
+  color: var(--obsidian);
+}
+
+.gold {
+  background-color: var(--gold);
+  color: var(--obsidian);
+}
+
+.primary:hover {
+  background-color: var(--nightBlue);
+}
+
+.secondary:hover {
+  background-color: var(--grayLine);
+}
+
+.gold:hover {
+  opacity: 0.9;
+}

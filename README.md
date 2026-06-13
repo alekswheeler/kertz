@@ -24,3 +24,22 @@ src/
 ├── App.tsx          # Componente raiz
 └── main.tsx         # Ponto de entrada do React (renderizador)
 ```
+
+### Separar o css e os dados do component
+
+1.  Separar o CSS
+
+Um detalhe é que apesar disso, os components devem conhecer as cores do projeto. Evita que o desenvolvedor (ou a IA)
+fique criando cores do nada.
+
+Vai ser usado css modules. Regra padrão: NUNCA USE CORES FORA DAS VARS
+
+3. Os Layouts e responsividade do component pai tem a responsabilidade do espaço e responsividade
+
+O componente pai dita o tamanho, as margens externas, o grid e a responsividade. O componente filho dita apenas o preenchimento interno (padding), bordas, tipografia e cores internas.
+
+Colocar a responsabilidade de quebras aqui também.
+
+2. Separar os dados
+
+Os dados devem ficar fora do component, via CMS ou via importação de arquivos JSON, por motivos óbvios.

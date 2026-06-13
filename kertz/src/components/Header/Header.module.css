@@ -1,0 +1,140 @@
+/* src/components/Header/Header.module.css */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 15px 5%;
+  border-bottom: 1px solid var(--grayLine);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Pseudo-elemento para criar o fundo semitransparente sem hardcodar o rgba */
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--offWhite);
+  opacity: 0.85;
+  z-index: -1;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  position: relative;
+}
+
+.logo {
+  font-family: "Cinzel", serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--obsidian);
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+
+.navDesktop {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.link {
+  color: var(--obsidian);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: var(--gold);
+}
+
+/* Estado ativo para o link de navegação */
+.ativo {
+  color: var(--gold);
+  border-bottom: 2px solid var(--gold);
+}
+
+.btnPrimario {
+  background-color: var(--obsidian);
+  color: var(--offWhite);
+  border: none;
+  padding: 10px 22px;
+  border-radius: 4px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btnPrimario:hover {
+  background-color: var(--nightBlue);
+}
+
+.btnSecundario {
+  background-color: transparent;
+  color: var(--obsidian);
+  border: 1px solid var(--grayLine);
+  padding: 10px 22px;
+  border-radius: 4px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btnSecundario:hover {
+  background-color: var(--grayLine);
+}
+
+.menuHamburguer {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--obsidian);
+  cursor: pointer;
+  display: none; /* Escondido por padrão no desktop */
+}
+
+.navMobile {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px 5%;
+  background-color: var(--offWhite);
+  border-bottom: 1px solid var(--grayLine);
+}
+
+.botoesWrapper {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Responsividade encapsulada no módulo */
+@media (max-width: 768px) {
+  .navDesktop {
+    display: none;
+  }
+
+  .menuHamburguer {
+    display: block;
+  }
+}
+
+@media (min-width: 769px) {
+  .navMobile {
+    display: none;
+  }
+}

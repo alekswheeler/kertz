@@ -1,8 +1,4 @@
-import Features from "../../components/Features";
-import FinalCTA from "../../components/FinalCTA";
-import Hero from "../../components/Hero";
-import { Container } from "../../components/Layout/Container";
-import Pricing from "../../components/Pricing";
+import { Container } from "../../components/layout/Container";
 import { MainLayout } from "../../layouts/MainLayout";
 
 // ATENÇÃO
@@ -19,7 +15,7 @@ import { MainLayout } from "../../layouts/MainLayout";
 export function Home() {
   return (
     <MainLayout>
-      <Container>
+      {/* <Container>
         <Hero />
       </Container>
       <Container>
@@ -30,6 +26,10 @@ export function Home() {
       </Container>
       <Container>
         <FinalCTA />
+      </Container> */}
+      <Container bgColor="red" columns={2}>
+        <div>AAA</div>
+        <div>BBB</div>
       </Container>
     </MainLayout>
   );

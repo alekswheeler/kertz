@@ -1,12 +1,15 @@
-import type { ReactNode } from "react";
+import type { ReactNode, CSSProperties } from "react";
+import React from "react";
+import styles from "./Container.module.css";
 
 interface ContainerProps {
   children: ReactNode;
   id?: string;
   variant?: "flex" | "grid" | "block";
-  padding?: string | number; // Aceita "20px", "2rem" ou número puro como 40
-  bgColor?: string; // Aceita "red", "#ff0000", "var(--cor)"
+  padding?: string | number;
+  bgColor?: string;
   className?: string;
+  columns?: number;
 }
 
 export function Container({
@@ -16,22 +19,41 @@ export function Container({
   padding,
   bgColor,
   className = "",
+  columns,
 }: ContainerProps) {
-  const variantClass = `container-inner-${variant}`;
+  // Se o usuário passar 'columns', mudamos automaticamente para a variante 'grid'
+  const activeVariant = columns ? "grid" : variant;
+  const variantClass = styles[`container-inner-${activeVariant}`];
 
-  // Monta o estilo inline bruto padrão do HTML/Navegador
-  const customStyles: React.CSSProperties = {
-    ...(padding !== undefined && { padding }), // O React converte número puro para 'px' automaticamente aqui
+  // Verifica se devemos aplicar a classe de colunas dinâmicas
+  const dynamicClass = columns ? styles["has-dynamic-columns"] : "";
+
+  // Injeta estilos tradicionais e variáveis CSS personalizadas
+  const customStyles: CSSProperties = {
+    ...(padding !== undefined && { padding }),
     ...(bgColor && { backgroundColor: bgColor }),
+    // Injeta a variável CSS que o @media query vai ler
+    ...(columns !== undefined &&
+      ({ "--dynamic-columns": columns } as React.CSSProperties)),
   };
+
+  // Concatena as classes do container interno
+  const innerClasses = [
+    styles["container-inner-box"],
+    variantClass,
+    dynamicClass, // Adiciona a classe de colunas dinâmicas se existir
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <section
       id={id}
-      className={`custom-container-section ${className}`}
-      style={customStyles} // Injeta direto: style="padding: 10px; background-color: red;"
+      className={`${styles["custom-container-section"]} ${className}`}
+      style={customStyles}
     >
-      <div className={`container-inner-box ${variantClass}`}>{children}</div>
+      {/* O grid é aplicado aqui dentro, respeitando o max-width */}
+      <div className={innerClasses}>{children}</div>
     </section>
   );
 }

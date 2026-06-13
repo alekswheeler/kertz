@@ -1,0 +1,146 @@
+/* src/components/Pricing/Pricing.module.css */
+
+.section {
+  padding: 80px 5%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: center;
+}
+
+.pricingCard {
+  padding: 40px 32px;
+  border-radius: 12px;
+  border: 1px solid var(--grayLine);
+  background-color: var(--offWhite);
+  position: relative;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.pricingCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.pricingCardFeatured {
+  background-color: var(--nightBlue);
+  color: var(--offWhite);
+  border-color: var(--nightBlue);
+  z-index: 1;
+}
+
+.pricingBadge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--gold);
+  color: var(--obsidian);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.pricingTitle {
+  font-size: 24px;
+  margin-bottom: 8px;
+  font-family: "Lato", sans-serif;
+}
+
+.pricingPrice {
+  font-size: 48px;
+  font-weight: 700;
+  font-family: "Cinzel", serif;
+  margin-bottom: 24px;
+  color: var(--obsidian);
+}
+
+.pricingCardFeatured .pricingPrice {
+  color: var(--gold);
+}
+
+.pricingFeature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-size: 15px;
+}
+
+.pricingFeatureMissing {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+.buttonWrapper {
+  width: 100%;
+}
+
+/* Tablet: 2 colunas */
+@media (max-width: 1024px) {
+  .pricingGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .pricingCard {
+    padding: 32px 24px;
+  }
+
+  .pricingPrice {
+    font-size: 40px;
+  }
+}
+
+/* Mobile: 1 coluna */
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 4%;
+  }
+
+  .pricingGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .pricingCard {
+    padding: 32px 24px;
+  }
+
+  .pricingPrice {
+    font-size: 36px;
+  }
+
+  .pricingTitle {
+    font-size: 22px;
+  }
+}
+
+/* Mobile pequeno */
+@media (max-width: 480px) {
+  .pricingCard {
+    padding: 28px 20px;
+  }
+
+  .pricingPrice {
+    font-size: 32px;
+  }
+
+  .pricingFeature {
+    font-size: 14px;
+    gap: 10px;
+  }
+}
